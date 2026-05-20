@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dillon Price Content Portfolio</title>
+  <title>Dillon Price | Content Writer & Strategist</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="nav-brand">Dillon Price</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="/" class="active">Home</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -26,81 +40,50 @@
         strategist for EnRoute Jobs, which includes in-depth articles on remote work, digital nomadism, and the future
         of work that reinforce the platform's authority in the global jobs and flexible work.
       </p>
+      <a href="/portfolio.html" class="cta-btn">View My Work &rarr;</a>
     </div>
     <div class="hero-image">
       <img src="profile.jpg" alt="Dillon Price Portfolio" />
     </div>
   </section>
 
-  <!-- Portfolio Section -->
-  <section class="portfolio">
-    <h3>See samples of Dillon's work below.</h3>
-
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="university-of-phoenix">University of Phoenix</button>
-      <button class="filter-btn" data-filter="monster">Monster.com</button>
-      <button class="filter-btn" data-filter="enroute">EnRoute Jobs</button>
-      <input type="text" id="searchInput" placeholder="Search titles..." />
+  <!-- Featured Work Preview -->
+  <section class="featured">
+    <h3>Featured Work</h3>
+    <div class="featured-grid" id="featuredGrid">
+      <!-- Populated by script -->
     </div>
-
-    <ul class="article-list" id="articleList">
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/environmental-science/environmental-science-degree-jobs.html" target="_blank" rel="noopener">Environmental science degree jobs</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/accounting/gaap-vs-ifrs-in-accounting.html" target="_blank" rel="noopener">GAAP vs. IFRS in accounting</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/business/common-management-interview-questions-and-answers.html" target="_blank" rel="noopener">Common management interview questions and answers</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/education/why-take-teacher-ce-courses-online.html" target="_blank" rel="noopener">Why take teacher CE courses online?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/it/essential-business-intelligence-analyst-skills.html" target="_blank" rel="noopener">Essential business intelligence analyst skills</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/accounting/common-accounting-interview-questions-and-answers.html" target="_blank" rel="noopener">Common accounting interview questions and answers</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/workforce-solutions/workforce-resources/posts/employee-engagement/why-education-benefits-sometimes-underperform.html" target="_blank" rel="noopener">Why education benefits sometimes underperform</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/workforce-solutions/workforce-resources/posts/employee-engagement/how-companies-can-optimize-their-tuition-benefits.html" target="_blank" rel="noopener">How companies can optimize their tuition benefits</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/workforce-solutions/workforce-resources/posts/skills-development/recruiting-wont-help-labor-shortage.html" target="_blank" rel="noopener">Why recruiting alone won't help the ongoing labor shortage</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/finance/essential-finance-skills-for-professionals.html" target="_blank" rel="noopener">Essential finance skills for professionals</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/workforce-solutions/workforce-resources/posts/leadership-development/how-to-build-an-effective-upskilling-program.html" target="_blank" rel="noopener">How to build an effective upskilling program</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/education/how-to-become-an-athletic-director.html" target="_blank" rel="noopener">How to become an athletic director</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/criminal-justice/what-is-a-bachelors-degree-in-criminal-justice.html" target="_blank" rel="noopener">What is a bachelor's degree in criminal justice administration?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/counseling/what-is-behavioral-science.html" target="_blank" rel="noopener">What is behavioral science?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/it/what-is-business-intelligence.html" target="_blank" rel="noopener">What is business intelligence?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/healthcare/what-is-a-health-education-specialist.html" target="_blank" rel="noopener">What is a health education specialist?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/cybersecurity/what-is-a-bachelors-in-cybersecurity.html" target="_blank" rel="noopener">What is a bachelor's in cybersecurity?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/business/what-is-a-market-research-analyst.html" target="_blank" rel="noopener">What is a market research analyst?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/finance/what-is-an-investment-analyst.html" target="_blank" rel="noopener">What is an investment analyst?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/environmental-science/what-is-an-environmental-compliance-inspector.html" target="_blank" rel="noopener">What is an environmental compliance inspector?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/criminal-justice/careers-in-corporate-security.html" target="_blank" rel="noopener">Careers in corporate security</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/entrepreneurship/what-is-a-serial-entrepreneur.html" target="_blank" rel="noopener">What is a serial entrepreneur?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/environmental-science/how-to-become-an-environmental-scientist.html" target="_blank" rel="noopener">How to become an environmental scientist</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/social-work/careers-in-child-protective-services.html" target="_blank" rel="noopener">Careers in child protective services</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/education/what-is-a-paraprofessional-in-education.html" target="_blank" rel="noopener">What is a paraprofessional in education?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/psychology/essential-tools-and-courses-for-studying-psychology.html" target="_blank" rel="noopener">Essential tools and courses for studying psychology</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/entrepreneurship/essential-entrepreneurship-skills.html" target="_blank" rel="noopener">Essential entrepreneurship skills, tools and classes</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/entrepreneurship/what-is-entrepreneurship.html" target="_blank" rel="noopener">What is entrepreneurship?</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/finance/fintech-impact-on-financial-inclusion.html" target="_blank" rel="noopener">How fintech impacts financial inclusion</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/online-college/ai-in-online-college-education.html" target="_blank" rel="noopener">The future of AI in online college education</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/blog/using-college-credit-transfer-to-return-to-school.html" target="_blank" rel="noopener">Using the college credit transfer process to return to school</a></li>
-      <li data-source="university-of-phoenix"><a href="https://www.phoenix.edu/articles/education/how-to-become-principal-of-a-school.html" target="_blank" rel="noopener">How to become principal of a school</a></li>
-      <li data-source="monster"><a href="https://www.monster.com/career-advice/article/what-it-is-really-like-for-a-millennial-working-in-silicon-valley" target="_blank" rel="noopener">11 of the Best Silicon Valley Companies to Work For</a></li>
-      <li data-source="monster"><a href="https://www.monster.com/career-advice/career-paths/healthcare-technology-careers/how-to-become-an-ultrasound-technician" target="_blank" rel="noopener">How to Become an Ultrasound Technician</a></li>
-      <li data-source="monster"><a href="https://www.monster.com/career-advice/career-paths/physical-science-careers/highest-paying-science-jobs" target="_blank" rel="noopener">The 10 Highest-Paying Science Jobs to Apply for Now</a></li>
-      <li data-source="monster"><a href="https://www.monster.com/career-advice/article/treat-the-pros-as-an-athletic-trainer" target="_blank" rel="noopener">How to Become an Athletic Trainer</a></li>
-      <li data-source="monster"><a href="https://www.monster.com/career-advice/career-paths/healthcare-careers/how-to-become-a-radiation-therapist" target="_blank" rel="noopener">How to Become a Radiation Therapist</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/how-to-read-job-descriptions-like-a-recruiter" target="_blank" rel="noopener">How to Read Remote Job Descriptions Like a Recruiter</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/remote-job-search" target="_blank" rel="noopener">Why Your Remote Job Search Feels Stalled (How to Fix It)</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/11-of-the-top-skills-and-certifications-for-2030/" target="_blank" rel="noopener">11 of the Top Skills and Certifications for 2030</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/get-paid-to-move-to-portugal/" target="_blank" rel="noopener">Can I get paid to move to Portugal in 2025?</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/digital-nomad-visas-in-2025/" target="_blank" rel="noopener">Countries Offering Digital Nomad Visas in 2025</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/digital-nomad-vs-remote-worker/" target="_blank" rel="noopener">Digital Nomad vs. Remote Worker: What's the Difference?</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/ergonomics-for-remote-workers-a-guide-to-healthy-and-productive-workspaces/" target="_blank" rel="noopener">Ergonomics for Remote Workers: A Guide to Healthy and Productive Workspaces</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/micro-businesses-for-digital-nomads/" target="_blank" rel="noopener">How Digital Nomads Are Using AI and No-Code Tools to Build Micro-Businesses in 2025</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/pub-desking/" target="_blank" rel="noopener">Pub Desking: How Pubs Are Becoming the Next Great Workspaces</a></li>
-      <li data-source="enroute"><a href="https://enroutejobs.com/blog/remote-job-scams/" target="_blank" rel="noopener">Remote Job Scams Cost Americans $300M in 2025: 7 Red Flags You Can't Ignore</a></li>
-    </ul>
-
-    <div class="pagination" id="pagination">
-      <button id="prevBtn" onclick="changePage(-1)">&#8592;</button>
-      <span id="pageInfo">1 of 1</span>
-      <button id="nextBtn" onclick="changePage(1)">&#8594;</button>
-    </div>
+    <a href="/portfolio.html" class="cta-btn">See All Articles &rarr;</a>
   </section>
 
-  <script src="script.js"></script>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Dillon Price. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Load 3 featured articles
+    fetch('/articles.json')
+      .then(r => r.json())
+      .then(articles => {
+        const grid = document.getElementById('featuredGrid');
+        articles.slice(0, 3).forEach(a => {
+          const card = document.createElement('a');
+          card.href = a.url;
+          card.target = '_blank';
+          card.rel = 'noopener';
+          card.className = 'featured-card';
+          const label = { 'university-of-phoenix': 'University of Phoenix', 'monster': 'Monster.com', 'enroute': 'EnRoute Jobs' }[a.source] || a.source;
+          card.innerHTML = `<span class="card-source">${label}</span><p class="card-title">${a.title}</p>`;
+          grid.appendChild(card);
+        });
+      });
+  </script>
 </body>
 </html>
