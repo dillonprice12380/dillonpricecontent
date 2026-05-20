@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Dillon Price</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="nav-brand">Dillon Price</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/about.html" class="active">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>About</h1>
+    <p>Content writer, strategist, and SEO specialist.</p>
+  </section>
+
+  <section class="about-section">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="profile.jpg" alt="Dillon Price" />
+      </div>
+      <div class="about-text">
+        <h2>Hi, I'm Dillon Price.</h2>
+        <p>
+          I'm a detail-oriented content writer and strategist with over eight years of professional experience
+          specializing in SEO-driven content and topical authority. I create long-form, search-optimized articles
+          that help brands educate their audiences while ranking for competitive keywords and AI search results.
+        </p>
+        <p>
+          My bylined work appears on <strong>Monster.com</strong> and <strong>University of Phoenix</strong>. I also serve
+          as a core writer and content strategist for <strong>EnRoute Jobs</strong>, covering remote work, digital
+          nomadism, and the future of work.
+        </p>
+        <h3>What I Do</h3>
+        <ul class="about-list">
+          <li>Long-form SEO content (1,500&ndash;3,000+ words)</li>
+          <li>Topical authority strategy & content clustering</li>
+          <li>Keyword research & competitive analysis</li>
+          <li>Industries: legal services, higher education, career development, remote work, finance, healthcare</li>
+          <li>AI-search optimized writing (AIO / SGE ready)</li>
+        </ul>
+        <h3>Experience</h3>
+        <ul class="about-list">
+          <li><strong>EnRoute Jobs</strong> &mdash; Core Writer & Content Strategist</li>
+          <li><strong>University of Phoenix</strong> &mdash; Contributing Writer</li>
+          <li><strong>Monster.com</strong> &mdash; Contributing Writer</li>
+        </ul>
+        <div class="about-cta">
+          <a href="/portfolio.html" class="cta-btn">View My Work &rarr;</a>
+          <a href="/contact.html" class="cta-btn cta-outline">Get in Touch &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Dillon Price. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
