@@ -1,0 +1,256 @@
+/* ========================================
+   Dillon Price Content Portfolio - Styles
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --teal: #00b8a9;
+  --teal-dark: #009e91;
+  --bg-dark: #0d0d0d;
+  --bg-section: #1a1a1a;
+  --text-white: #ffffff;
+  --text-muted: #cccccc;
+  --border-color: #2e2e2e;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ---- Hero ---- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 4rem 5%;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+}
+
+.hero-text h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text h2 {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--teal);
+  color: var(--bg-dark);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: var(--teal-dark);
+  transform: scale(1.08);
+}
+
+.bio {
+  font-size: 1rem;
+  color: var(--text-white);
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 4px;
+  filter: grayscale(100%);
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+}
+
+/* ---- Portfolio Section ---- */
+.portfolio {
+  background-color: var(--bg-section);
+  padding: 3rem 5%;
+}
+
+.portfolio h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-white);
+}
+
+/* ---- Filters ---- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.55rem 1.2rem;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--teal);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--teal);
+  color: var(--bg-dark);
+}
+
+#searchInput {
+  padding: 0.55rem 1rem;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-white);
+  font-size: 0.95rem;
+  min-width: 220px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  flex: 1;
+}
+
+#searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+#searchInput:focus {
+  border-color: var(--teal-dark);
+}
+
+/* ---- Article List ---- */
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-list li {
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.9rem 0;
+}
+
+.article-list li a {
+  color: var(--teal);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.article-list li a:hover {
+  color: var(--teal-dark);
+  text-decoration: underline;
+}
+
+.article-list li.hidden {
+  display: none;
+}
+
+/* ---- Pagination ---- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--teal);
+  color: var(--bg-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination button:not(:disabled):hover {
+  background-color: var(--teal-dark);
+}
+
+#pageInfo {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 5%;
+    min-height: auto;
+  }
+
+  .hero-image {
+    order: -1;
+  }
+
+  .hero-image img {
+    max-width: 280px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #searchInput {
+    min-width: unset;
+    width: 100%;
+  }
+}
