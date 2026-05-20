@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS Admin | Dillon Price</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .admin-wrap { max-width: 900px; margin: 6rem auto 3rem; padding: 0 5%; }
+    .admin-wrap h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .admin-wrap .subtitle { color: var(--teal); margin-bottom: 2rem; }
+    #loginBox { max-width: 360px; }
+    #loginBox input { width: 100%; padding: 0.6rem 0.8rem; margin: 0.5rem 0 1rem;
+      background: #1a1a1a; border: 1px solid var(--teal); color: #fff; border-radius: 4px; font-size: 1rem; }
+    #loginError { color: #ff6b6b; font-size: 0.9rem; margin-top: 0.5rem; }
+    #cmsPanel { display: none; }
+    .cms-form { background: #1a1a1a; border: 1px solid #2e2e2e; border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem; }
+    .cms-form h2 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--teal); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.85rem; color: #aaa; }
+    .form-group input, .form-group select {
+      background: #111; border: 1px solid #3a3a3a; color: #fff; padding: 0.55rem 0.8rem;
+      border-radius: 4px; font-size: 0.95rem; width: 100%; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--teal); }
+    .btn-add { background: var(--teal); color: #000; border: none; padding: 0.6rem 1.4rem;
+      border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+    .btn-add:hover { background: var(--teal-dark); }
+    .cms-msg { font-size: 0.9rem; margin-top: 0.6rem; color: var(--teal); min-height: 1.2em; }
+    table.articles-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    table.articles-table th { text-align: left; padding: 0.6rem 0.8rem; background: #1a1a1a;
+      color: var(--teal); border-bottom: 2px solid #2e2e2e; }
+    table.articles-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid #1e1e1e; vertical-align: top; }
+    table.articles-table tr:hover td { background: #111; }
+    .badge { font-size: 0.72rem; padding: 2px 8px; border-radius: 20px; font-weight: 700; white-space: nowrap; }
+    .badge-uop { background: #004f8b22; color: #56b0ff; border: 1px solid #56b0ff55; }
+    .badge-monster { background: #6a00ff22; color: #c084fc; border: 1px solid #c084fc55; }
+    .badge-enroute { background: #00b8a922; color: var(--teal); border: 1px solid var(--teal); }
+    .btn-del { background: transparent; border: 1px solid #ff6b6b; color: #ff6b6b;
+      padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+    .btn-del:hover { background: #ff6b6b22; }
+    .table-title a { color: var(--teal); text-decoration: none; }
+    .table-title a:hover { text-decoration: underline; }
+    .filter-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .filter-bar button { padding: 0.35rem 0.9rem; border-radius: 20px; border: 1px solid #3a3a3a;
+      background: transparent; color: #ccc; cursor: pointer; font-size: 0.85rem; }
+    .filter-bar button.active, .filter-bar button:hover { background: var(--teal); color: #000; border-color: var(--teal); }
+    .filter-bar input { padding: 0.35rem 0.8rem; border-radius: 20px; border: 1px solid #3a3a3a;
+      background: transparent; color: #fff; font-size: 0.85rem; min-width: 180px; }
+    .count-badge { background: #2a2a2a; color: #aaa; font-size: 0.8rem; padding: 2px 8px;
+      border-radius: 20px; margin-left: 0.5rem; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="nav-brand">Dillon Price</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="admin-wrap">
+    <h1>CMS Admin</h1>
+    <p class="subtitle">Manage your portfolio articles</p>
+
+    <!-- Login -->
+    <div id="loginBox">
+      <div class="form-group">
+        <label for="adminPass">Admin Password</label>
+        <input type="password" id="adminPass" placeholder="Enter password" />
+      </div>
+      <button class="btn-add" id="loginBtn">Login</button>
+      <p id="loginError"></p>
+    </div>
+
+    <!-- CMS Panel (hidden until logged in) -->
+    <div id="cmsPanel">
+
+      <!-- Add Article Form -->
+      <div class="cms-form">
+        <h2>+ Add New Article</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="newTitle" placeholder="Article title" />
+          </div>
+          <div class="form-group">
+            <label>Source</label>
+            <select id="newSource">
+              <option value="university-of-phoenix">University of Phoenix</option>
+              <option value="monster">Monster.com</option>
+              <option value="enroute">EnRoute Jobs</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>URL</label>
+          <input type="url" id="newUrl" placeholder="https://..." />
+        </div>
+        <button class="btn-add" id="addBtn">Add Article</button>
+        <p class="cms-msg" id="addMsg"></p>
+      </div>
+
+      <!-- Article Table -->
+      <div class="cms-form">
+        <h2>Articles <span class="count-badge" id="articleCount">0</span></h2>
+        <div class="filter-bar">
+          <button class="active" data-f="all">All</button>
+          <button data-f="university-of-phoenix">UoP</button>
+          <button data-f="monster">Monster</button>
+          <button data-f="enroute">EnRoute</button>
+          <input type="text" id="cmsSearch" placeholder="Search..." />
+        </div>
+        <table class="articles-table">
+          <thead>
+            <tr><th>#</th><th>Title</th><th>Source</th><th></th></tr>
+          </thead>
+          <tbody id="articleTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = 'dillon2024admin';
+    let allArticles = [];
+    let cmsFilter = 'all';
+    let cmsSearch = '';
+
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', login);
+    document.getElementById('adminPass').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') login();
+    });
+
+    function login() {
+      const pw = document.getElementById('adminPass').value;
+      if (pw === ADMIN_PASSWORD) {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('cmsPanel').style.display = 'block';
+        loadArticles();
+      } else {
+        document.getElementById('loginError').textContent = 'Incorrect password. Please try again.';
+      }
+    }
+
+    function loadArticles() {
+      fetch('/articles.json?nocache=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+          allArticles = data;
+          renderTable();
+        });
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('articleTableBody');
+      let filtered = allArticles.filter(a => {
+        const fMatch = cmsFilter === 'all' || a.source === cmsFilter;
+        const sMatch = cmsSearch === '' || a.title.toLowerCase().includes(cmsSearch.toLowerCase());
+        return fMatch && sMatch;
+      });
+      document.getElementById('articleCount').textContent = filtered.length + ' / ' + allArticles.length;
+      tbody.innerHTML = '';
+      filtered.forEach(function(a, i) {
+        const labelMap = { 'university-of-phoenix': ['University of Phoenix','badge-uop'], 'monster': ['Monster.com','badge-monster'], 'enroute': ['EnRoute Jobs','badge-enroute'] };
+        const [label, cls] = labelMap[a.source] || [a.source, ''];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${i + 1}</td>
+          <td class="table-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title}</a></td>
+          <td><span class="badge ${cls}">${label}</span></td>
+          <td><button class="btn-del" data-id="${a.id}">Delete</button></td>`;
+        tbody.appendChild(tr);
+      });
+      tbody.querySelectorAll('.btn-del').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (confirm('Delete this article?')) deleteArticle(parseInt(this.dataset.id));
+        });
+      });
+    }
+
+    document.querySelectorAll('.filter-bar button').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        cmsFilter = this.dataset.f;
+        renderTable();
+      });
+    });
+    document.getElementById('cmsSearch').addEventListener('input', function() {
+      cmsSearch = this.value;
+      renderTable();
+    });
+
+    document.getElementById('addBtn').addEventListener('click', function() {
+      const title = document.getElementById('newTitle').value.trim();
+      const url = document.getElementById('newUrl').value.trim();
+      const source = document.getElementById('newSource').value;
+      const msg = document.getElementById('addMsg');
+      if (!title || !url) { msg.style.color = '#ff6b6b'; msg.textContent = 'Title and URL are required.'; return; }
+      const newId = allArticles.length ? Math.max(...allArticles.map(a => a.id)) + 1 : 1;
+      allArticles.push({ id: newId, title, url, source });
+      saveArticles('Article added!');
+      document.getElementById('newTitle').value = '';
+      document.getElementById('newUrl').value = '';
+    });
+
+    function deleteArticle(id) {
+      allArticles = allArticles.filter(a => a.id !== id);
+      saveArticles('Article deleted.');
+    }
+
+    function saveArticles(successMsg) {
+      fetch('/api/articles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': ADMIN_PASSWORD },
+        body: JSON.stringify(allArticles)
+      })
+      .then(r => r.json())
+      .then(function(data) {
+        const msg = document.getElementById('addMsg');
+        if (data.ok) {
+          msg.style.color = 'var(--teal)';
+          msg.textContent = successMsg;
+          renderTable();
+        } else {
+          msg.style.color = '#ff6b6b';
+          msg.textContent = 'Error saving: ' + (data.error || 'unknown');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
